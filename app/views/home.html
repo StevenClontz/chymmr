@@ -1,5 +1,5 @@
 <div class="container">
-  <form ng-submit="createGame()">
+  <form ng-submit="newGame.$create()">
     <div class="form-group">
       <label for="gameName">
              Name of Game</label>
@@ -7,13 +7,19 @@
              class="form-control"
              id="gameName"
              placeholder="Auburn Puzzle Party 27"
-             ng-model="game.name"/>
+             ng-model="newGame.name"/>
+    </div>
+    <div class="form-group">
+      <label for="gameId">
+             Game Id</label>
+      <input type="test"
+             class="form-control"
+             id="gameId"
+             placeholder="app27"
+             ng-model="newGame.id"/>
     </div>
     <button type="submit"
             class="btn btn-default">
             Create</button>
   </form>
-  <ul>
-    <li ng-repeat="game in games">{{game.name}}</li>
-  </ul>
 </div>

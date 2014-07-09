@@ -1,0 +1,19 @@
+{
+  "rules": {
+    "games": {
+      "$game": {
+        ".read": "!data.exists() || data.child('secret').child(data.child('secret/key').val()).hasChild(auth.uid)",
+        ".write": "!data.exists() || data.child('secret').child(data.child('secret/key').val()).hasChild(auth.uid)",
+        "public": {
+          ".read": true
+        },
+        "secret": {
+          "$key": {
+            ".read": "data.exists()",
+            ".write": "data.exists()"
+          }
+        }
+      }
+    }
+  }
+}
