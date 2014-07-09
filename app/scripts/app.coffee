@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('chmmyrApp', ['firebase'])
+angular.module('chmmyrApp', ['firebase', 'ui.router'])

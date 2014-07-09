@@ -1,12 +1,4 @@
-'use strict';
-
-###
- * @ngdoc function
- * @name chmmyrApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the chmmyrApp
-###
+'use strict'
 
 angular.module('chmmyrApp')
   .controller('MainCtrl', ['$scope', '$firebase', ($scope, $firebase) ->
