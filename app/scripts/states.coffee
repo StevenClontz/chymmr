@@ -9,14 +9,13 @@ angular.module('chmmyrApp').config(['$stateProvider', '$urlRouterProvider',
       #Dashboard State
       .state 'home',
         url: "/"
-        templateUrl: 'views/main.html'
-        controller: 'MainCtrl'
+        templateUrl: 'views/home.html'
+        controller: 'HomeCtrl'
 
       #404
       .state '404',
         url: '/404'
         templateUrl: 'views/404.html'
-        controller: ['$rootScope', ($rootScope) -> $rootScope.pageTitle= '404']
 
 
 ])

@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('chmmyrApp')
-  .controller('MainCtrl', ['$scope', '$firebase', ($scope, $firebase) ->
+  .controller('HomeCtrl', ['$scope', '$firebase', ($scope, $firebase) ->
     ref = new Firebase("https://chmmyr.firebaseio.com/")
     $scope.messages = $firebase(ref)
     $scope.userName = 'User X'
