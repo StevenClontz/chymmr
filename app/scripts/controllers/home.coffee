@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('chmmyrApp')
-  .controller('HomeCtrl', ['$scope', '$firebase', ($scope, $firebase) ->
+  .controller('HomeCtrl', ['$scope', '$firebase', '$state', ($scope, $firebase, $state) ->
 
     ref = new Firebase("https://chmmyr.firebaseio.com/")
 
@@ -36,6 +36,11 @@ angular.module('chmmyrApp')
       $firebase: ->
         $firebase(ref.child("games/#{$scope.newGame.id}"))
       $create: ->
-        @$firebase().$set(@$data())
+        id = @id
+        @$firebase().$set(@$data()).then(
+          () -> #success
+            $state.go 'games.get.show', id: id
+        )
+
 
   ])
