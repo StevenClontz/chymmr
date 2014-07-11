@@ -1,6 +1,5 @@
-hey{{ newGame }}, {{user}}
 <div class="container" ng-if="!newGame">
-  <p>Connecting to server... {{ newGame }}</p>
+  <p>Connecting to server...</p>
 </div>
 <div class="container" ng-if="newGame">
   <form ng-submit="newGame.$create()">
