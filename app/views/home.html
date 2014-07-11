@@ -1,4 +1,8 @@
-<div class="container">
+hey{{ newGame }}, {{user}}
+<div class="container" ng-if="!newGame">
+  <p>Connecting to server... {{ newGame }}</p>
+</div>
+<div class="container" ng-if="newGame">
   <form ng-submit="newGame.$create()">
     <div class="form-group">
       <label for="gameName">
