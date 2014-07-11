@@ -6,6 +6,11 @@ angular.module('chmmyrApp').config(['$stateProvider', '$urlRouterProvider',
     $urlRouterProvider.otherwise "/404"
     $stateProvider
 
+      #Root State
+      .state 'root',
+        url: ''
+        controller: ['$state', ($state) -> $state.go('home')]
+
       #Dashboard State
       .state 'home',
         url: "/"
