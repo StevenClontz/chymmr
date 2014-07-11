@@ -6,3 +6,8 @@ angular.module('chmmyrApp')
     $scope.game = Firebase.game($stateParams.id).public()
 
   ])
+  .controller('GamesGetEditCtrl', ['$scope', 'Firebase', '$stateParams', ($scope, Firebase, $stateParams) ->
+
+    admins = Firebase.game($stateParams.id).admins($stateParams.secretKey)
+    admins.$child(Firebase.user().uid).$set(true)
+  ])

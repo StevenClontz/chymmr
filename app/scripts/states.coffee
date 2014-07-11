@@ -33,6 +33,11 @@ angular.module('chmmyrApp').config(['$stateProvider', '$urlRouterProvider',
         url: ''
         templateUrl: 'views/games/show.html'
 
+      .state 'games.get.edit',
+        url: '/:secretKey'
+        templateUrl: 'views/games/edit.html'
+        controller: 'GamesGetEditCtrl'
+
 
       #404
       .state '404',

@@ -26,5 +26,7 @@ angular.module('chmmyrApp')
             $firebase @ref
           public: ->
             $firebase @ref.child("public")
+          admins: (secretKey) ->
+            $firebase @ref.child("secret/#{secretKey}/admins")
       }
   ])

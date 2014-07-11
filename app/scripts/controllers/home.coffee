@@ -4,19 +4,23 @@ angular.module('chmmyrApp')
   .controller('HomeCtrl', ['$scope', 'Firebase', '$state', 'Random',
     ($scope, Firebase, $state, Random) ->
 
+      id = Random.alphaNumStr(8)
+      secretKey = Random.alphaNumStr(8)
+
       $scope.newGame =
-        name: "New Game"
-        id: Random.alphaNumStr(8)
-        secretKey: Random.alphaNumStr(8)
+        id: id
+        name: "New Game #{id}"
+        secretKey: secretKey
         creator: ->
           Firebase.user()
         data: ->
           obj =
             public:
               name: @name
-            key: @secretKey
-            secret: {}
-          obj.secret[@secretKey] = admins: {}
+              id: @id
+            secret:
+              key: @secretKey
+          obj.secret[@secretKey] = {admins: {}}
           obj.secret[@secretKey].admins[@creator().uid] = true
           return obj
         firebase: ->

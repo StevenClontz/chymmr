@@ -1,16 +1,19 @@
 {
   "rules": {
+    "auth": {
+      ".read": "auth != null"
+    },
     "games": {
       "$game": {
-        ".read": "!data.exists() || data.child('secret').child(data.child('secret/key').val()).hasChild(auth.uid)",
-        ".write": "!data.exists() || data.child('secret').child(data.child('secret/key').val()).hasChild(auth.uid)",
+        ".read": "data.child('secret').child(data.child('secret/key').val()).child('admins').hasChild(auth.uid)",
+        ".write": "!data.exists() || data.child('secret').child(data.child('secret/key').val()).child('admins').hasChild(auth.uid)",
         "public": {
-          ".read": true
+          ".read": "data.exists()"
         },
         "secret": {
           "$key": {
-            ".read": "data.exists()",
-            ".write": "data.exists()"
+            ".read": "$key == data.parent().child('key').val()",
+            ".write": "$key == data.parent().child('key').val()"
           }
         }
       }
