@@ -1,11 +1,8 @@
 'use strict'
 
 angular.module('chmmyrApp')
-  .controller('GamesGetCtrl', ['$scope', '$firebase', '$stateParams', ($scope, $firebase, $stateParams) ->
+  .controller('GamesGetCtrl', ['$scope', 'Firebase', '$stateParams', ($scope, Firebase, $stateParams) ->
 
-    gameId = $stateParams.id
-    ref = new Firebase("https://chmmyr.firebaseio.com/games/#{gameId}/public")
-
-    $scope.game = $firebase(ref)
+    $scope.game = Firebase.game($stateParams.id).public()
 
   ])

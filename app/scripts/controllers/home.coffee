@@ -1,13 +1,15 @@
 'use strict'
 
 angular.module('chmmyrApp')
-  .controller('HomeCtrl', ['$rootScope', '$scope', 'Firebase', '$state', 'Random',
-    ($rootScope, $scope, Firebase, $state, Random) ->
+  .controller('HomeCtrl', ['$scope', 'Firebase', '$state', 'Random',
+    ($scope, Firebase, $state, Random) ->
 
       $scope.newGame =
         name: "New Game"
         id: Random.alphaNumStr(8)
         secretKey: Random.alphaNumStr(8)
+        creator: ->
+          Firebase.user()
         data: ->
           obj =
             public:
@@ -15,11 +17,11 @@ angular.module('chmmyrApp')
             key: @secretKey
             secret: {}
           obj.secret[@secretKey] = admins: {}
-          obj.secret[@secretKey].admins[$rootScope.user.uid] = true
+          obj.secret[@secretKey].admins[@creator().uid] = true
           return obj
         firebase: ->
-          Firebase.game @id
-        $create: ->
+          Firebase.game(@id).full()
+        create: ->
           id = @id
           gameData = @data()
           @firebase().$set(gameData).then(

@@ -1,8 +1,5 @@
-<div class="container" ng-if="!newGame">
-  <p>Connecting to server...</p>
-</div>
-<div class="container" ng-if="newGame">
-  <form ng-submit="newGame.$create()">
+<div class="container">
+  <form ng-submit="newGame.create()">
     <div class="form-group">
       <label for="gameName">
              Name of Game</label>
